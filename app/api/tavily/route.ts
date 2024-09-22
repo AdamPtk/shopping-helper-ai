@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     const price = await generateText({
       model: openai("gpt-4o-mini"),
-      prompt: `Extract ONLY the price from the user query: "${userQuery}". Just the number with currency, without any additional text.`,
+      prompt: `Extract ONLY the price from the user query: "${userQuery}". Just the number with currency, without any additional text. If the price isn't there, return "brak ceny".`,
     });
 
     const tavilyResponse = await axios.post<TavilyResponse>(
@@ -37,8 +37,7 @@ export async function POST(req: NextRequest) {
       {
         api_key: TAVILY_API_KEY,
         query: `${userQuery} do ${price.text}`,
-        search_depth: "basic",
-        include_answer: false,
+        search_depth: "advanced",
         include_images: true,
         max_results: 20,
         include_domains: [""],
@@ -60,7 +59,7 @@ export async function POST(req: NextRequest) {
       Przeanalizuj dane i zwróć tylko prawidłowe wartości w formacie JSON, wybierając produkty najbliżej tej ceny, ale pomijając najtańsze produkty.
       Nie zwracaj nic poza JSONEM!
     `;
-    console.log(formattedResults);
+
     const { object } = await generateObject({
       model: openai("gpt-4o-mini"),
       schema: z.object({

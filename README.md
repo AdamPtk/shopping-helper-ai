@@ -1,5 +1,3 @@
-skopiuj package.lock na maina, usuń actions.ts, usuń data z Chat route
-
 ## Prompt 1
 
 ### Context
@@ -112,6 +110,48 @@ Let's create a chat with nicely styled messages and avatars. Use framer motion f
 ---
 
 ## Prompt 3
+
+I refactored chat page a little bit, so take that as a base code for the next changes:
+
+**_Paste refactored component_**
+
+After doing some research with the user, assistant will create perfect query and fetch the best suited items for him using function getResults() . When fetching starts, I want the items box with loading state to show in the chat area under the messages. Here's the fetched items object form:
+{
+title: string,
+price: string,
+image: string,
+link: string,
+}
+Use framer motion. Loader should be centered in items box. Remember about responsiveness and theme colors.
+
+---
+
+## Links
+
+https://github.com/AdamPtk/shopping-helper-ai/tree/v2-chat-init
+https://v0.dev/chat
+https://cursor.directory/nextjs-react-typescript-cursor-rules
+https://sdk.vercel.ai/docs/introduction
+https://platform.openai.com/docs/overview
+https://sdk.vercel.ai/docs/foundations/prompts#system-messages
+https://tavily.com/
+https://www.firecrawl.dev/
+https://openai.com/o1/
+
+## Presentation init prompt 1
+
+**_Give context_**
+
+### Project
+
+On images you have the landing page layout that we created yesterday and the folder structure.
+Now lets go to the /chat route itself. Keep the context of what we have done till now to keep the styles, colors, folders structure and elements behaviors context. Here is the base code we will be working on:
+
+**_Paste vercel sdk docs base component_**
+
+Let's create a chat with nicely styled messages and avatars. Use framer motion for messages. Add "Send" button with loading state while chat is answering and outline "New chat" button next to it. We have light/dark theme in our project, so make sure the component is responsive to that.
+
+## Presentation init prompt 2
 
 I refactored chat page a little bit, so take that as a base code for the next changes:
 
